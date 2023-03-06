@@ -254,6 +254,9 @@ async function init() {
 
             // ******* To Do *******
             // Exit from inquirer - generate HTML 
+
+             // Populate template with user responses 
+            // render = page-template(manager, engineer, intern);
         }
 
     // ******** console.log - response output check ***********
