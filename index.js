@@ -1,3 +1,4 @@
+const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -7,13 +8,15 @@ const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./src/page-template.js");
+
 const { lutimes } = require("fs/promises");
 
 
 // Variables
-const teamBuider = [];
+// Array for storing Selected team members
+const arrayChoices = [];
+let teamBuider = [];
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -114,7 +117,7 @@ const promptUser2 = () => {
 
         {
             type: 'input',
-            name: 'engineerID',
+            name: 'engineerId',
             message: 'Please enter your Engineer’s ID:',
             validate: (answer) => {
                 if (answer === ''){
@@ -168,7 +171,7 @@ const promptUser3 = () => {
 
         {
             type: 'input',
-            name: 'internID',
+            name: 'internId',
             message: 'Please enter your Intern’s ID:',
             validate: (answer) => {
                 if (answer === ''){
@@ -211,17 +214,23 @@ async function init() {
 
         // ****** Staff - manager ******
         let listOpts = false;
-        const answersMrg = await promptUser1(listOpts);
+        let answersMrg = await promptUser1(listOpts);
         console.log(answersMrg);
-        // Place Object into an array
+        // Create initial array called teambuilder[]
         teamBuider.push(answersMrg);
         console.log(teamBuider);
         
         // Extract Next option 
         // Create an array of Values from Object
         let usrFirstChoice = Object.values(answersMrg);
-        // Get the last value of the array
+        console.log('usrFirstChoice output:', usrFirstChoice); 
+        // Get the last value of the array (to use as an usr Option Selector)
         let arrFirstChoice = usrFirstChoice.pop();
+
+        // Create initial array called teambuilder[], with Key staff values only
+        // Remove the last key/value from the Object (teamOption), so answersMrg has only the required items
+        delete teamBuider[0].teamOption;
+        console.log(teamBuider);
         console.log('First Option choice ans:',arrFirstChoice);
 
 
@@ -233,7 +242,7 @@ async function init() {
             let answersEng = await promptUser2();
             console.log(answersEng);
             // append answer to an array called teamBuider[]
-            teamBuider[1] = answersEng;
+            teamBuider.push(answersEng);
             console.log(teamBuider);
 
             // Now call / present Options to user again, set feed-in parameter 'true'
@@ -254,7 +263,7 @@ async function init() {
                     answersEng = await promptUser2();
                     console.log(answersEng);
                     // append answer to an array called teamBuider[]
-                    teamBuider[2] = answersEng;
+                    teamBuider.push(answersEng);
                     console.log(teamBuider);
 
                     // Now call / present Options to user again, set feed-in parameter 'true'
@@ -279,7 +288,7 @@ async function init() {
                     answersIntern = await promptUser3();
                     console.log(answersIntern);
                     // append answer to an array called teamBuider[]
-                    teamBuider[2] = answersIntern;
+                    teamBuider.push(answersIntern);
                     console.log(teamBuider);
 
                     // Now call / present Options to user again, set feed-in parameter 'true'
@@ -297,8 +306,12 @@ async function init() {
                     // ********* Checking choice made by Intern **********
                     if (arrFirstChoice === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
 
-                        console.log('ans-4b: Finish building the team');
+                        console.log('ans-4: Finish building the team');
                         console.log('final team array: ',teamBuider);
+
+                        // Populate template with user responses 
+                        const infoHTML = render(teamBuider);
+                        console.log(infoHTML);    
                     }
         
                 } else if (arrFirstChoice === 'Finish building the team') {
@@ -316,7 +329,7 @@ async function init() {
             answersIntern = await promptUser3();
             console.log(answersIntern);
             // append answer to an array called teamBuider[]
-            teamBuider[1] = answersIntern;
+            teamBuider.push(answersIntern);
             console.log(teamBuider);
 
             // Now call / present Options to user again, set feed-in parameter 'true'
@@ -336,7 +349,14 @@ async function init() {
 
                 console.log('ans-4a: Finish building the team');
                 console.log('final team array: ',teamBuider);
+
+            // Populate template with user responses 
+            //render = page-template(manager, engineer, intern);
+            const infoHTML = render(teamBuider);
+            console.log(infoHTML);
+
             }
+
 
         } else if (arrFirstChoice === 'Finish building the team') {
 
@@ -348,8 +368,17 @@ async function init() {
             // ******* To Do *******
             // Exit from inquirer - generate HTML 
 
-             // Populate template with user responses 
-            // render = page-template(manager, engineer, intern);
+            // Populate template with user responses 
+            const infoHTML = render(teamBuider);
+            console.log(infoHTML);
+
+            // fs.writeFile(outputPath, infoHTML, (error) => {
+
+            //     return error 
+            //     ? console.error(err) 
+            //     : console.log('success')
+            // });
+
         }
 
     // ******** console.log - response output check ***********
@@ -373,3 +402,12 @@ async function init() {
 
 // function call to initialize program
 init();
+
+
+// // function to write README file
+// function writeToFile(fileName, data) {
+
+//     fs.writeFile(fileName, data, (err) =>
+//         err ? console.error(err) : console.log('success')
+//     );
+// }
