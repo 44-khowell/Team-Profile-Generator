@@ -101,7 +101,7 @@ const promptUser1 = (options) => {
         );
         console.log(manager);
         console.log(answers.teamOption);
-        
+
         // Create new TEAM array beginning with Manager 
         teamBuider.push(manager);
         // Capture Manager's option choice for section when returned from inquirer
@@ -194,6 +194,8 @@ const promptUser2 = () => {
             answers.gitHubUsrName
         );
         console.log(engineer);
+        // Create new TEAM array beginning with Engineer
+        teamBuider.push(engineer);
     });  
 };
 
@@ -258,6 +260,9 @@ const promptUser3 = () => {
             answers.internSchool,
         );
         console.log(intern);
+        // Create new TEAM array beginning with Intern
+        teamBuider.push(intern);
+        
     }); 
 };
 
@@ -344,7 +349,7 @@ async function init() {
 
                     if (userTeamOption === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
                         console.log('ans-3: Finish building the team');
-                        //console.log('final team array: ',teamBuider);
+                        console.log('final team array: ',teamBuider);
                     }
 
                 //} else if (arrFirstChoice === 'Add an Intern') {
@@ -373,12 +378,19 @@ async function init() {
                     // ********* Checking choice made by Intern **********
                     if (userTeamOption === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
 
-                        console.log('ans-4: Finish building the team');
-                        //console.log('final team array: ',teamBuider);
+                        console.log('ans-4a: Finish building the team');
+                        console.log('final team array: ',teamBuider);
 
                         // Populate template with user responses 
-                        // const infoHTML = render(teamBuider);
-                        // console.log(infoHTML);    
+                        const infoHTML = render(teamBuider);
+                        console.log(infoHTML);    
+
+                        fs.writeFile(outputPath, infoHTML, (error) => {
+
+                            return error 
+                            ? console.error(err) 
+                            : console.log('success - html template ready!!')
+                        });
                     }
         
                 //} else if (arrFirstChoice === 'Finish building the team') {
@@ -386,7 +398,7 @@ async function init() {
                     console.log('Hi, we building a team!: ' ,userTeamOption);
                     // Return teamBuider[] array 
                     console.log('ans-5: Finish building the team');
-                    //console.log('final team array: ',teamBuider);
+                    console.log('final team array: ',teamBuider);
                 }
 
             // **** extra tests Done *******
@@ -418,8 +430,8 @@ async function init() {
             // ********* Checking choice made by Intern **********
             if (userTeamOption === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
 
-                console.log('ans-4a: Finish building the team');
-                //console.log('final team array: ',teamBuider);
+                console.log('ans-4b: Finish building the team');
+                console.log('final team array: ',teamBuider);
 
             // Populate template with user responses 
             //render = page-template(manager, engineer, intern);
@@ -441,15 +453,15 @@ async function init() {
             // Exit from inquirer - generate HTML 
 
             // Populate template with user responses 
-            // const infoHTML = render(teamBuider);
-            // console.log(infoHTML);
+            const infoHTML = render(teamBuider);
+            console.log(infoHTML);
 
-            // fs.writeFile(outputPath, infoHTML, (error) => {
+            fs.writeFile(outputPath, infoHTML, (error) => {
 
-            //     return error 
-            //     ? console.error(err) 
-            //     : console.log('success')
-            // });
+                return error 
+                ? console.error(err) 
+                : console.log('success')
+            });
 
         }
 
