@@ -42,7 +42,7 @@ function writeToFile(fileOutPath, htmlData) {
 const promptUser1 = (options) => {
 
     if (options === false) { 
-    console.log('current option status-1: ', options); 
+        
     return inquirer.prompt ([
         {
             type: 'input',
@@ -112,8 +112,6 @@ const promptUser1 = (options) => {
             answers.managerEmail,
             answers.managerOfficeNo
         );
-        console.log(manager);
-        console.log(answers.teamOption);
 
         // Create new TEAM array beginning with Manager Object
         teamBuider.push(manager);
@@ -141,7 +139,6 @@ const promptUser1 = (options) => {
         .then((answers) => {
             // Capture Manager's option choice for section when returned from inquirer (use with 'if else')
             userTeamOption = answers.teamOption;
-            console.log(answers.teamOption);
         });
     }
 };
@@ -207,7 +204,7 @@ const promptUser2 = () => {
             answers.engineerEmail,
             answers.gitHubUsrName
         );
-        console.log(engineer);
+
         // Append TEAM array with Engineer Object
         teamBuider.push(engineer);
     });  
@@ -274,7 +271,7 @@ const promptUser3 = () => {
             answers.internEmail,
             answers.internSchool,
         );
-        console.log(intern);
+
         // Append TEAM array with Intern Object
         teamBuider.push(intern);
     }); 
@@ -290,8 +287,7 @@ async function init() {
         let listOpts = false;
 
         await promptUser1(listOpts);
-        console.log('Return from manager Option ans: ',userTeamOption);
-
+  
         // ****** Test for Option selected, Eng, Intern, TeamBuilding ******
         
         // if (arrFirstChoice === 'Add an Engineer') {
@@ -303,8 +299,7 @@ async function init() {
             // Now call / present Options to user again, set feed-in parameter 'true'
             // ****** Options Return ******
             await promptUser1(true);
-            console.log('First Option choice ans-2:',userTeamOption);
-
+    
             // ********* Checking choice made by Engineer **********
                 if (userTeamOption === 'Add an Engineer') {
                     // ****** Staff - Engineer ******
@@ -313,16 +308,13 @@ async function init() {
                     // Now call / present Options to user again, set feed-in parameter 'true'
                     // ****** Options Return ******
                     await promptUser1(true);
-                    console.log('First Option choice ans-3:',userTeamOption);
 
                     if (userTeamOption === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
-                        console.log('ans-3: Finish building the team');
-                        console.log('final team array: ',teamBuider);
 
+                        console.log('final team array: ',teamBuider);
                         // Exit from inquirer - generate HTML 
                         // Populate template with user responses 
-                        infoHTML = render(teamBuider);
-                        console.log(infoHTML);    
+                        infoHTML = render(teamBuider);  
 
                         // function to write team.html file
                         writeToFile(outputPath, infoHTML);
@@ -335,33 +327,25 @@ async function init() {
                     // Now call / present Options to user again, set feed-in parameter 'true'
                     // ****** Options Return ******
                     await promptUser1(true);
-                    console.log('First Option choice ans-4:',userTeamOption);
-
+ 
                     // ********* Checking choice made by Intern **********
                     if (userTeamOption === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
 
-                        console.log('ans-4a: Finish building the team');
                         console.log('final team array: ',teamBuider);
-
                         // Exit from inquirer - generate HTML 
                         // Populate template with user responses 
-                        infoHTML = render(teamBuider);
-                        console.log(infoHTML);    
+                        infoHTML = render(teamBuider);  
 
                         // function to write team.html file
                         writeToFile(outputPath, infoHTML);
                     }
         
                 } else if (userTeamOption === 'Finish building the team') {
-                    console.log('Hi, we building a team!: ' ,userTeamOption);
                     
-                    console.log('ans-5: Finish building the team');
                     console.log('final team array: ',teamBuider);
-
                     // Exit from inquirer - generate HTML 
                     // Populate template with user responses 
-                    infoHTML = render(teamBuider);
-                    console.log(infoHTML);    
+                    infoHTML = render(teamBuider);  
 
                     // function to write team.html file
                     writeToFile(outputPath, infoHTML);
@@ -378,18 +362,14 @@ async function init() {
             // Now call / present Options to user again, set feed-in parameter 'true'
             // ****** Options Return ******
             await promptUser1(true);
-            console.log('First Option choice ans-4:',userTeamOption);
-
+ 
             // ********* Checking choice made by Intern **********
             if (userTeamOption === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
 
-                console.log('ans-4b: Finish building the team');
                 console.log('final team array: ',teamBuider);
-
                 // Exit from inquirer - generate HTML 
                 // Populate template with user responses 
                 infoHTML = render(teamBuider);
-                console.log(infoHTML);
  
                 // function to write team.html file
                 writeToFile(outputPath, infoHTML);
@@ -397,14 +377,10 @@ async function init() {
 
         } else if (userTeamOption === 'Finish building the team') {
 
-            console.log('ans-6: Finish building the team');
-            console.log('Hi, we are building a team!: ' ,userTeamOption);
-            
+            console.log('Hi, we are building a team!: ' ,userTeamOption);           
             // Exit from inquirer - generate HTML 
-
             // Populate template with user responses 
             infoHTML = render(teamBuider);
-            console.log(infoHTML);
 
             // function to write team.html file
             writeToFile(outputPath, infoHTML);
