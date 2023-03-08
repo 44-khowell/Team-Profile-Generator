@@ -277,74 +277,28 @@ async function init() {
         await promptUser1(listOpts);
         // console.log('Return from manager ans: ',answersMrg);
         console.log('Return from manager Option ans: ',userTeamOption);
-        
-        // Create initial array called teambuilder[]
-        //teamBuider.push(answersMrg);
-        //console.log(teamBuider);
-        
-        // Extract Next option 
-        // Create an array of Values from Object
-        //let usrFirstChoice = Object.values(answersMrg);
-        //console.log('usrFirstChoice output:', usrFirstChoice); 
-        // Get the last value of the array (to use as an usr Option Selector)
-        //let arrFirstChoice = usrFirstChoice.pop();
 
-        // Create initial array called teambuilder[], with Key staff values only
-        // Remove the last key/value from the Object (teamOption), so answersMrg has only the required items
-        //delete teamBuider[0].teamOption;
-        ///console.log(teamBuider);
-        //console.log('First Option choice ans:',arrFirstChoice);
-
-
-        // Test for Option selected, Eng, Intern, TeamBuilding
+        // ****** Test for Option selected, Eng, Intern, TeamBuilding ******
         
         // if (arrFirstChoice === 'Add an Engineer') {
         if (userTeamOption === 'Add an Engineer') {
 
             // ****** Staff - Engineer ******
             await promptUser2();
-            //let answersEng = await promptUser2();
-            //console.log(answersEng);
-            // append answer to an array called teamBuider[]
-            //teamBuider.push(answersEng);
-            //console.log(teamBuider);
 
             // Now call / present Options to user again, set feed-in parameter 'true'
             // ****** Options Return ******
             await promptUser1(true);
-            //let nextOption = await promptUser1(true);
-            //console.log(nextOption);
-             
-
-            // Extract Next option 
-            // Create an array of Values from Object
-            //usrFirstChoice = Object.values(nextOption);
-            // Get the last value of the array
-            //arrFirstChoice = usrFirstChoice.pop();
             console.log('First Option choice ans-2:',userTeamOption);
 
             // ********* Checking choice made by Engineer **********
-                //if (arrFirstChoice === 'Add an Engineer') {
                 if (userTeamOption === 'Add an Engineer') {
                     // ****** Staff - Engineer ******
                     await promptUser2();
-                    //answersEng = await promptUser2();
-                    //console.log(answersEng);
-                    // append answer to an array called teamBuider[]
-                    //teamBuider.push(answersEng);
-                    //console.log(teamBuider);
 
                     // Now call / present Options to user again, set feed-in parameter 'true'
                     // ****** Options Return ******
                     await promptUser1(true);
-                    //nextOption = await promptUser1(true);
-                    //console.log(nextOption);
-
-                    // Extract Next option 
-                    // Create an array of Values from Object
-                    //usrFirstChoice = Object.values(nextOption);
-                    // Get the last value of the array
-                    //arrFirstChoice = usrFirstChoice.pop();
                     console.log('First Option choice ans-3:',userTeamOption);
 
                     if (userTeamOption === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
@@ -352,27 +306,13 @@ async function init() {
                         console.log('final team array: ',teamBuider);
                     }
 
-                //} else if (arrFirstChoice === 'Add an Intern') {
                 } else if (userTeamOption === 'Add an Intern') {
                     // ****** Staff - Intern ******
                     await promptUser3();
-                    //answersIntern = await promptUser3();
-                    //console.log(answersIntern);
-                    // append answer to an array called teamBuider[]
-                    //teamBuider.push(answersIntern);
-                    //console.log(teamBuider);
-
+ 
                     // Now call / present Options to user again, set feed-in parameter 'true'
                     // ****** Options Return ******
                     await promptUser1(true);
-                    //let nextOption = await promptUser1(true);
-                    //console.log(nextOption);
-
-                    // Extract Next option 
-                    // Create an array of Values from Object
-                    //usrFirstChoice = Object.values(nextOption);
-                    // Get the last value of the array
-                    //arrFirstChoice = usrFirstChoice.pop();
                     console.log('First Option choice ans-4:',userTeamOption);
 
                     // ********* Checking choice made by Intern **********
@@ -393,7 +333,6 @@ async function init() {
                         });
                     }
         
-                //} else if (arrFirstChoice === 'Finish building the team') {
                 } else if (userTeamOption === 'Finish building the team') {
                     console.log('Hi, we building a team!: ' ,userTeamOption);
                     // Return teamBuider[] array 
@@ -401,30 +340,17 @@ async function init() {
                     console.log('final team array: ',teamBuider);
                 }
 
-            // **** extra tests Done *******
+            // **** extra tests - Done *******
 
-        //} else if (arrFirstChoice === 'Add an Intern') {
+        // ****** Main check continued *******
         } else if (userTeamOption === 'Add an Intern') {
 
             // ****** Staff - Intern ******
             await promptUser3();
-            //answersIntern = await promptUser3();
-            //console.log(answersIntern);
-            // append answer to an array called teamBuider[]
-            //teamBuider.push(answersIntern);
-            //console.log(teamBuider);
 
             // Now call / present Options to user again, set feed-in parameter 'true'
             // ****** Options Return ******
             await promptUser1(true);
-            //nextOption = await promptUser1(true);
-            //console.log(nextOption);
-
-            // Extract Next option 
-            // Create an array of Values from Object
-            //usrFirstChoice = Object.values(nextOption);
-            // Get the last value of the array
-            //arrFirstChoice = usrFirstChoice.pop();
             console.log('First Option choice ans-4:',userTeamOption);
 
             // ********* Checking choice made by Intern **********
@@ -440,8 +366,6 @@ async function init() {
 
             }
 
-
-       // } else if (arrFirstChoice === 'Finish building the team') {
         } else if (userTeamOption === 'Finish building the team') {
 
             console.log('ans-6: Finish building the team');
@@ -464,12 +388,6 @@ async function init() {
             });
 
         }
-
-    // ******** console.log - response output check ***********
-    //    let answers = Object.values(teamOption);
-    //     let arrChoice = answers.pop();
-    //     console.log('choice ans',arrChoice);
-    // ********************************************************
 
         // ********* To do ************
         // Save populated template to ReadMe.md file 

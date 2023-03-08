@@ -1,0 +1,18 @@
+
+.col-12.jumbotron.mb-3.team-heading {
+    background-color: rgb(88, 213, 161); 
+}
+
+h1, h2, h3 {
+    color: white;
+}
+
+.card-header {
+    background-color: rgb(173, 108, 233);
+
+}
+
+.card-body {
+    background-color: rgb(243, 241, 241);
+}
+
