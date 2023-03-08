@@ -1,17 +1,19 @@
+
+// Importing all external modules created in lib
 const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+
+// Importing all other required exteral modules
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+// Starter code variables - which are used in generating html, writing file to output
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./src/page-template.js");
-
-const { lutimes } = require("fs/promises");
-
 
 // Variables
 // Array for storing Selected team members
@@ -20,12 +22,25 @@ let teamBuider = [];
 
 // Global Variables
 let userTeamOption;     // Capture Manager's option choice for section when returned from inquirer 
+let infoHTML;           // Used to store HTML template generated 
 
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
 
+// function to write README file
+function writeToFile(fileOutPath, htmlData) {
+
+    fs.writeFile(outputPath, infoHTML, (error) => {
+
+        return error 
+        ? console.error(err) 
+        : console.log('success')
+    });
+}
+
+
+// START of Code to gather information about the development team members, and render the HTML file.
 
 // Function for displaying / prompting user with questions
-// Staff - Manager 
+// ******** Staff - Manager (Prompts) *********
 const promptUser1 = (options) => {
 
     if (options === false) { 
@@ -89,7 +104,6 @@ const promptUser1 = (options) => {
                 'Finish building the team',
             ],
         },
-    
     ]) 
     .then((answers) => {
 
@@ -109,9 +123,9 @@ const promptUser1 = (options) => {
     });
 
 
-    // listOpts - false
+    // Test variable listOpts - false
     } else {
-        // ********* Options Only *********
+        // ********* Options Only (Prompt) *********
         console.log('current option status-2: ', options); 
         return inquirer.prompt ([
         {
@@ -133,7 +147,7 @@ const promptUser1 = (options) => {
     }
 };
 
-// Staff - Engineer 
+// ******** Staff - Engineer (Prompts) ********
 const promptUser2 = () => {
 
     return inquirer.prompt([
@@ -199,7 +213,7 @@ const promptUser2 = () => {
     });  
 };
 
-// Staff - Intern  
+// ******* Staff - Intern (Prompts) *******
 const promptUser3 = () => { 
 
     return inquirer.prompt([
@@ -261,8 +275,7 @@ const promptUser3 = () => {
         );
         console.log(intern);
         // Create new TEAM array beginning with Intern
-        teamBuider.push(intern);
-        
+        teamBuider.push(intern);        
     }); 
 };
 
@@ -272,10 +285,10 @@ async function init() {
     try {
 
         // ****** Staff - manager ******
+        // Initialise variable for Team Options selection from user input 
         let listOpts = false;
-        //let answersMrg = await promptUser1(listOpts);
+
         await promptUser1(listOpts);
-        // console.log('Return from manager ans: ',answersMrg);
         console.log('Return from manager Option ans: ',userTeamOption);
 
         // ****** Test for Option selected, Eng, Intern, TeamBuilding ******
@@ -304,6 +317,14 @@ async function init() {
                     if (userTeamOption === 'Add an Engineer' || 'Add an Intern' || 'Finish building the team') {
                         console.log('ans-3: Finish building the team');
                         console.log('final team array: ',teamBuider);
+
+                        // Exit from inquirer - generate HTML 
+                        // Populate template with user responses 
+                        infoHTML = render(teamBuider);
+                        console.log(infoHTML);    
+
+                        // function to write team.html file
+                        writeToFile(outputPath, infoHTML);
                     }
 
                 } else if (userTeamOption === 'Add an Intern') {
@@ -321,28 +342,33 @@ async function init() {
                         console.log('ans-4a: Finish building the team');
                         console.log('final team array: ',teamBuider);
 
+                        // Exit from inquirer - generate HTML 
                         // Populate template with user responses 
-                        const infoHTML = render(teamBuider);
+                        infoHTML = render(teamBuider);
                         console.log(infoHTML);    
 
-                        fs.writeFile(outputPath, infoHTML, (error) => {
-
-                            return error 
-                            ? console.error(err) 
-                            : console.log('success - html template ready!!')
-                        });
+                        // function to write team.html file
+                        writeToFile(outputPath, infoHTML);
                     }
         
                 } else if (userTeamOption === 'Finish building the team') {
                     console.log('Hi, we building a team!: ' ,userTeamOption);
-                    // Return teamBuider[] array 
+                    
                     console.log('ans-5: Finish building the team');
                     console.log('final team array: ',teamBuider);
+
+                    // Exit from inquirer - generate HTML 
+                    // Populate template with user responses 
+                    infoHTML = render(teamBuider);
+                    console.log(infoHTML);    
+
+                    // function to write team.html file
+                    writeToFile(outputPath, infoHTML);
                 }
 
-            // **** extra tests - Done *******
+            // **** Extra tests - Done *******
 
-        // ****** Main check continued *******
+        // ****** Main prompt check continued:- *******
         } else if (userTeamOption === 'Add an Intern') {
 
             // ****** Staff - Intern ******
@@ -359,11 +385,13 @@ async function init() {
                 console.log('ans-4b: Finish building the team');
                 console.log('final team array: ',teamBuider);
 
-            // Populate template with user responses 
-            //render = page-template(manager, engineer, intern);
-            // const infoHTML = render(teamBuider);
-            // console.log(infoHTML);
-
+                // Exit from inquirer - generate HTML 
+                // Populate template with user responses 
+                infoHTML = render(teamBuider);
+                console.log(infoHTML);
+ 
+                // function to write team.html file
+                writeToFile(outputPath, infoHTML);
             }
 
         } else if (userTeamOption === 'Finish building the team') {
@@ -371,27 +399,15 @@ async function init() {
             console.log('ans-6: Finish building the team');
             console.log('Hi, we are building a team!: ' ,userTeamOption);
             
-            // Return teamBuider[] array 
-            //console.log(teamBuider);
-            // ******* To Do *******
             // Exit from inquirer - generate HTML 
 
             // Populate template with user responses 
-            const infoHTML = render(teamBuider);
+            infoHTML = render(teamBuider);
             console.log(infoHTML);
 
-            fs.writeFile(outputPath, infoHTML, (error) => {
-
-                return error 
-                ? console.error(err) 
-                : console.log('success')
-            });
-
+            // function to write team.html file
+            writeToFile(outputPath, infoHTML);
         }
-
-        // ********* To do ************
-        // Save populated template to ReadMe.md file 
-        // writeToFile('README.md', template);
     }
     catch(err) {
         if (err) {
@@ -406,10 +422,3 @@ async function init() {
 init();
 
 
-// // function to write README file
-// function writeToFile(fileName, data) {
-
-//     fs.writeFile(fileName, data, (err) =>
-//         err ? console.error(err) : console.log('success')
-//     );
-// }

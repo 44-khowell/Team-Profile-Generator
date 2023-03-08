@@ -1,6 +1,6 @@
 
 .col-12.jumbotron.mb-3.team-heading {
-    background-color: rgb(88, 213, 161); 
+    background-color: rgba(249, 165, 20, 0.998); 
 }
 
 h1, h2, h3 {
@@ -16,3 +16,8 @@ h1, h2, h3 {
     background-color: rgb(243, 241, 241);
 }
 
+.card.employee-card {
+    margin: 10px;
+    box-shadow: 5px 4px 3px gray;
+    
+}
