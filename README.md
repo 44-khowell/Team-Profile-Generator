@@ -70,6 +70,10 @@ User Prompted:
   
   ## Mock-Up :pushpin:
   
+  Unit Testing Results (via Jest):
+  
+  ![TestResult-Final](https://user-images.githubusercontent.com/119610043/223873410-db8505e2-adc3-43d8-9e63-6c7db7936660.png)
+  
   Object Team-Generated Array Sample: 
   
   ![Object-team-array-generated](https://user-images.githubusercontent.com/119610043/223860836-210b8801-8d4f-457a-958b-e4a270a88f73.png)
