@@ -68,8 +68,37 @@ User Prompted:
          - Use the outputPath variable to target this location
 
   
+  ## Mock-Up
+  
+  Object Team-Generated Array Sample: 
+  
+  ![Object-team-array-generated](https://user-images.githubusercontent.com/119610043/223860836-210b8801-8d4f-457a-958b-e4a270a88f73.png)
+
+  Team.html - Application Generated Output Sample 
+  
+  ![Team-html-Output](https://user-images.githubusercontent.com/119610043/223861328-e73ffea9-aac7-48b0-99eb-d5f4b08f4d49.png)
+
+  
+  ## Page Link
+  
+  My GitHub Link: https://github.com/44-khowell/Team-Profile-Generator/
   
   
-  
+## Credits
+
+   Refernces
+
+   - https://www.tabnine.com/academy/javascript/how-to-get-an-objects-keys-and-values/#:~:text=Getting%20an%20object%E2%80%99s%20values%20The%20Object.values%20%28%29%20method,Object.entries%20%28%29%20method%20returns%20an%20array%20of%20arrays.
+   - https://www.youtube.com/watch?v=hsA_hx5H_4M&list=PLovN13bqAx7D_MFjL0PHnCkYAHMSO8-kU&index=74
+   - https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
 
 
+# License 
+
+Copyright (c) Keith Howell
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
