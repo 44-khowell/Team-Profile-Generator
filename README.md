@@ -83,6 +83,8 @@ User Prompted:
   
   My GitHub Link: https://github.com/44-khowell/Team-Profile-Generator/
   
+  URL of the deployed application: https://44-khowell.github.io/Team-Profile-Generator/
+  
   
 ## Credits :pushpin:
 
