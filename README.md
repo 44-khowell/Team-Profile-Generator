@@ -1,6 +1,6 @@
 # Module 12 Object-Oriented Programming: Team Profile Generator
 
-## Description
+## Description :closed_book:
 
 For this project given the outline of my On-the-job ticket, my main objectives is to:
 
@@ -68,7 +68,7 @@ User Prompted:
          - Use the outputPath variable to target this location
 
   
-  ## Mock-Up
+  ## Mock-Up :pushpin:
   
   Object Team-Generated Array Sample: 
   
@@ -79,21 +79,21 @@ User Prompted:
   ![Team-html-Output](https://user-images.githubusercontent.com/119610043/223861328-e73ffea9-aac7-48b0-99eb-d5f4b08f4d49.png)
 
   
-  ## Page Link
+  ## Page Link :pushpin:
   
   My GitHub Link: https://github.com/44-khowell/Team-Profile-Generator/
   
   
-## Credits
+## Credits :pushpin:
 
-   Refernces
+   Refernces 
 
    - https://www.tabnine.com/academy/javascript/how-to-get-an-objects-keys-and-values/#:~:text=Getting%20an%20object%E2%80%99s%20values%20The%20Object.values%20%28%29%20method,Object.entries%20%28%29%20method%20returns%20an%20array%20of%20arrays.
    - https://www.youtube.com/watch?v=hsA_hx5H_4M&list=PLovN13bqAx7D_MFjL0PHnCkYAHMSO8-kU&index=74
    - https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
 
 
-# License 
+# License :pushpin:
 
 Copyright (c) Keith Howell
 
