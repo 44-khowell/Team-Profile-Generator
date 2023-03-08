@@ -17,13 +17,11 @@ const render = require("./src/page-template.js");
 
 // Variables
 // Array for storing Selected team members
-const arrayChoices = [];
 let teamBuider = [];
 
 // Global Variables
 let userTeamOption;     // Capture Manager's option choice for section when returned from inquirer 
 let infoHTML;           // Used to store HTML template generated 
-
 
 // function to write README file
 function writeToFile(fileOutPath, htmlData) {
@@ -107,6 +105,7 @@ const promptUser1 = (options) => {
     ]) 
     .then((answers) => {
 
+        // Creating new Manager Object
         const manager = new Manager( 
             answers.managerName,
             answers.managerID,
@@ -116,9 +115,9 @@ const promptUser1 = (options) => {
         console.log(manager);
         console.log(answers.teamOption);
 
-        // Create new TEAM array beginning with Manager 
+        // Create new TEAM array beginning with Manager Object
         teamBuider.push(manager);
-        // Capture Manager's option choice for section when returned from inquirer
+       // Capture Manager's option choice for section when returned from inquirer
         userTeamOption = answers.teamOption;
     });
 
@@ -140,7 +139,7 @@ const promptUser1 = (options) => {
         },
         ])
         .then((answers) => {
-            // Capture Manager's option choice for section when returned from inquirer
+            // Capture Manager's option choice for section when returned from inquirer (use with 'if else')
             userTeamOption = answers.teamOption;
             console.log(answers.teamOption);
         });
@@ -201,6 +200,7 @@ const promptUser2 = () => {
     ])
     .then((answers) => {
 
+        // Creating new Engineer Object
         const engineer = new Engineer(
             answers.engineerName,
             answers.engineerId,
@@ -208,7 +208,7 @@ const promptUser2 = () => {
             answers.gitHubUsrName
         );
         console.log(engineer);
-        // Create new TEAM array beginning with Engineer
+        // Append TEAM array with Engineer Object
         teamBuider.push(engineer);
     });  
 };
@@ -267,6 +267,7 @@ const promptUser3 = () => {
     ]) 
     .then((answers) => {
 
+        // Creating new Intern Object 
         const intern = new Intern(
             answers.internName,
             answers.internId,
@@ -274,8 +275,8 @@ const promptUser3 = () => {
             answers.internSchool,
         );
         console.log(intern);
-        // Create new TEAM array beginning with Intern
-        teamBuider.push(intern);        
+        // Append TEAM array with Intern Object
+        teamBuider.push(intern);
     }); 
 };
 
