@@ -30,6 +30,45 @@ User Prompted:
     b. Please enter your Team Manager’s Employment ID
     c. Please enter your Team Manager’s Email Address 
     d. Please enter your Team Manager’s Office number
+    
+ Menu Options presented after:
+ 
+    * Add an Engineer 
+    * Add an Intern
+    * Finish building the team 
+    
+ User Prompted:
+ 
+      a. Please enter the Engineer’s Name
+      b. Please enter the Engineer’s Employment ID
+      c. Please enter the Engineer’s Email Address 
+      d. Please enter the Engineer’s GitHub username
+    Return back to options menu
+    
+ 
+  User Prompted:
+  
+      Intern Option:
+           a. Please enter the Engineer’s Name
+           b. Please enter the Engineer’s Employment ID
+           c. Please enter the Engineer’s Email Address 
+           d. Please enter the Engineer’s GitHub username
+        Return back to options menu
+ 
+      Build Team option selected:
+         Exit from Inquirer 
+   
+         - HTML is generated 
+         - Call the RENDER function 
+             - Pass-in an ARRAY containing ALL the employees Objects
+             - RENDER function, generates & returns a Block of HTML included templated DIV elements for each employee
+         
+         - Create an HTML file using the returned HTML from the RENDER function
+         - Write it to a file named team.html in the output folder 
+         - Use the outputPath variable to target this location
+
+  
+  
   
   
 
